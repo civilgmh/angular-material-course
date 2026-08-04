@@ -1,0 +1,110 @@
+    1  git status
+    2  git branch
+    3  eval $(ssh-agent -s); ssh-add ./resources/id_ed25519 
+    4  git push gitlab main; git push github main
+    5  exit
+    6  eval $(ssh-agent -s); ssh-add ./resources/id_ed25519 
+    7  mvn clean
+    8  cd ..
+    9  ls -al
+   10  cp -rf jam jam.next
+   11  cd jam.next/
+   12  git remote -v
+   13  git branch
+   14  cd ..
+   15  cd jam
+   16  cd ..
+   17  rm -rf jam
+   18  cp -rf jam.next jam
+   19  cd jam
+   20  git branch
+   21  git branch -m develop
+   22  git fetch gitlab main:main
+   23  git branch
+   24  git checkout main
+   25  git branch -D develop 
+   26  git branch
+   27  git pull gitlab main
+   28  mkdir ./docker/mongo/data
+   29  mv ./docker/mongo/scripts/data/load.json ./docker/mongo/data
+   30  rm ./docker/mongo/scripts/data/
+   31  rmdir ./docker/mongo/scripts/data/
+   32  cp ../jam.next/docker/mongo/scripts/setup.sh ./docker/mongo/scripts/
+   33  cd ../jam.next/
+   34  git branch
+   35  cp ../jam.next/docker/mongo/Dockerfile ./docker/mongo/
+   36  cd ../jam
+   37  cp ../jam.next/docker/mongo/Dockerfile ./docker/mongo/
+   38  git status
+   39  git add .
+   40  git commit -m "mongo sampledata file too large to be version controlled"
+   41  git push gitlab main; git push github main
+   42  ls -al
+   43  mvn clean install
+   44  cd docker/
+   45  docker compose up --build -d
+   46  curl -X GET http://localhost:8080/store | jq '.'
+   47  history
+   48  cd ..
+   49  ls -al
+   50  cd resources/
+   51  ls -al
+   52  history > history.txt
+    1  git status
+    2  git branch
+    3  eval $(ssh-agent -s); ssh-add ./resources/id_ed25519 
+    4  git push gitlab main; git push github main
+    5  exit
+    6  cd resources/
+    7  cd ..
+    8  history
+    9  eval $(ssh-agent -s); ssh-add ./resources/id_ed25519 
+   10  git remote -v
+   11  git status
+   12  cd services/
+   13  ls -al
+   14  rm -rf target/
+   15  ls -al
+   16  mkdir stores
+   17  mv src/ stores/
+   18  mv pom.xml stores/
+   19  mv entrypoint.sh stores/
+   20  mv stores/entrypoint.sh .
+   21  ls -al
+   22  mv entrypoint.sh stores/
+   23  mv Dockerfile stores/
+   24  mv README.md stores/
+   25  docker system prune -a
+   26  ls -al
+   27  cd stores/
+   28  mvn clean install
+   29  pwd
+   30  ls -al
+   31  cd ../docker/
+   32  docker compose up --build -d
+   33  ls -al
+   34  docker compose up --build -d
+   35  curl -X GET http://localhost:8080/stores | jq '.'
+   36  curl -X GET http://localhost:8080/store | jq '.'
+   37  docker exec -it mongo /bin/bash
+   38  mongosh
+   39  cd ../..
+   40  ls -al
+   41  git status
+   42  history >> ./resources/history.txt 
+  242  git status
+  243  git commit -m "initial revision"
+  244  cd ..
+  245  ls -al
+  246  rm -rf first-ng-app2
+  247  cd jam
+  248  ls -al
+  249  cd resources
+  250  ls -al
+  251  pwd
+  252  cd ../..
+  253  cp -rf ./jam/resources ./first-ng-app
+  254  cd first-ng-app
+  255  l s-al
+  256  ls -alR resources
+  257  cd resources
